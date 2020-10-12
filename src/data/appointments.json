@@ -1,0 +1,27 @@
+[
+  {
+    "patient": "N. Oarms",
+    "consultant": "Dr. Spleen",
+    "startTime": "2021-03-02 13:12"
+  },
+  {
+    "patient": "B. R. Oken",
+    "consultant": "Dr. Leg",
+    "startTime": "2021-03-01 08:36"
+  },
+  {
+    "patient": "D. Ead",
+    "consultant": "Dr. Big-Toe",
+    "startTime": "2021-03-02 10:48"
+  },
+  {
+    "patient": "Sir Inge",
+    "consultant": "Dr. Spleen",
+    "startTime": "2021-03-02 12:24"
+  },
+  {
+    "patient": "R. Ubber-Glove",
+    "consultant": "Dr. Leg",
+    "startTime": "2021-03-01 16:48"
+  }
+]

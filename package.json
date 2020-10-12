@@ -1,0 +1,30 @@
+{
+  "name": "tech-test-my-pulse",
+  "version": "1.0.0",
+  "description": "tech test - appointment management",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hydroes/tech-test-my-pulse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hydroes/tech-test-my-pulse/issues"
+  },
+  "homepage": "https://github.com/hydroes/tech-test-my-pulse#readme",
+  "dependencies": {
+    "express": "4.17.1",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "jest": "^26.5.2",
+    "nodemon": "^2.0.4"
+  }
+}
