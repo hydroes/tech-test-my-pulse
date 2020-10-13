@@ -3,7 +3,7 @@ const consultations = require('../data/consultations')
 const appointments = require('../data/appointments')
 
 // 'What are the available consultation slots for Dr. Big-Toe between 10:00 and 12:00 on 2021-03-02?'
-test('filter by consultant and specific date/time and return available consultation slots', () => {
+test.only('filter by consultant and specific date/time and return available consultation slots', () => {
 
   const expected = [{
     "name": "Dr. Big-Toe",
@@ -15,7 +15,7 @@ test('filter by consultant and specific date/time and return available consultat
     ]
   }]
 
-  const result = filterAvailableConsultations(consultations, appointments, 'Dr. Big-Toe', '2021-03-02 10:00', '2021-03-02 12:00')
+  const result = filterAvailableConsultations(consultations, appointments, 'Dr. Big-Toe', '2021-03-02 10:00', '2021-03-02 12:00', true)
 
   expect(result.sort()).toEqual(expected.sort());
 });
@@ -48,7 +48,7 @@ test('filter by specific date/time and return available consultation slots', () 
     ]
   }]
 
-  const result = filterAvailableConsultations(consultations, appointments, false, '2021-03-01 15:00', '2021-03-01 17:00')
+  const result = filterAvailableConsultations(consultations, appointments, false, '2021-03-01 15:00', '2021-03-01 17:00', true)
 
   expect(result.sort()).toEqual(expected.sort());
 });

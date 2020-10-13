@@ -15,7 +15,7 @@ const filterByConsultant = (consultations, consultantName) => {
   })
 }
 
-const filterAvailability = (consultations, queryStartDateTime, queryEndDateTime) => {
+const filterAvailability = (consultations, queryStartDateTime, queryEndDateTime, inclusive = true) => {
 
   const matchingConsultations = []
   consultations.forEach(consultation => {
@@ -25,9 +25,19 @@ const filterAvailability = (consultations, queryStartDateTime, queryEndDateTime)
       const availableStartDate = getStartDateFromString(availabilitySlot)
       const availableEndDate = getEndDateFromString(availabilitySlot)
 
-      const withInAvailableTimes = (
-        queryStartDateTime.isSameOrAfter(availableStartDate) &&
-        queryEndDateTime.isSameOrBefore(availableEndDate))
+      // @todo: hacked this
+      // I would definitely refactor this to that it could be used in composition. 
+      // I need to explain this personally in the interview
+      let withInAvailableTimes
+      if (inclusive) {
+        withInAvailableTimes = (
+          queryStartDateTime.isSameOrAfter(availableStartDate) &&
+          queryEndDateTime.isSameOrBefore(availableEndDate))
+      } else {
+        withInAvailableTimes = (
+          availableStartDate.isSameOrAfter(queryStartDateTime) &&
+          availableEndDate.isSameOrBefore(queryEndDateTime))
+      }
 
       return withInAvailableTimes
     })
@@ -73,9 +83,7 @@ const addUnbookedAppointmentSlots = (consultantsData, appointments) => consultan
   return consultantData
 })
 
-// @todo: ensure startDateTime, endDateTime are moment so comparison works
-module.exports = (consultations, appointments, consultantName = false, queryStartDateTime, queryEndDateTime) => {
-
+module.exports = (consultations, appointments, consultantName = false, queryStartDateTime, queryEndDateTime, inclusive = true) => {
   // filter by consultant if consultantName provided
   const consultationsFiltered = filterByConsultant(consultations, consultantName)
 
@@ -84,10 +92,10 @@ module.exports = (consultations, appointments, consultantName = false, queryStar
   const parsedQueryStartDateTime = moment(queryStartDateTime, 'YYYY-MM-DD hh:mm')
   const parsedEndDateTime = moment(queryEndDateTime, 'YYYY-MM-DD hh:mm')
 
-  const consultantsData = filterAvailability(consultationsFiltered, parsedQueryStartDateTime, parsedEndDateTime)
+  const consultantsData = filterAvailability(consultationsFiltered, parsedQueryStartDateTime, parsedEndDateTime, inclusive)
   const consultantsWithUnbookedSlots = addUnbookedAppointmentSlots(consultantsData, appointments)
 
-  const consulationsInfo = consultantsWithUnbookedSlots.map(consultantInfo => {
+  const consultationsInfo = consultantsWithUnbookedSlots.map(consultantInfo => {
     return {
       name: consultantInfo.name,
       slots: consultantInfo.unbookedSlots
@@ -95,5 +103,5 @@ module.exports = (consultations, appointments, consultantName = false, queryStar
   })
 
 
-  return consulationsInfo
+  return consultationsInfo
 }

@@ -15,8 +15,6 @@ app.use(function (err, req, res, next) {
 
 // routes
 app.get('/', (req, res) => {
-  // res.sendFile('public/schedule-form.html')
-  // res.sendFile(path.join(__dirname, './public', 'schedule-form.html'));
   res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 // app.post('/players', players.addPlayer)
