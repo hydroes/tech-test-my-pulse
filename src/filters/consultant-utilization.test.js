@@ -2,9 +2,6 @@ const consultantUtilization = require('./consultant-utilization')
 const consultations = require('../data/consultations')
 const appointments = require('../data/appointments')
 
-const moment = require('moment')
-const { getStartDateFromString, getEndDateFromString } = require('../utilities/date-parser')
-
 // 'What are the available consultation slots for Dr. Big-Toe between 10:00 and 12:00 on 2021-03-02?'
 test('calculate consultants utilization per day', () => {
 

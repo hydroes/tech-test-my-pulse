@@ -9,9 +9,63 @@ To Install
 To run tests:
 3) npm t 
 
-To start the server:
-npm run start
-Then browse to  http://localhost:3000
+To query the db use the following examples:
+
+1) What appointments have been arranged for Dr. Leg on 2021-03-01? 
+node ./src/index.js --appointment-by-doctor 'Dr. Leg' --appointment-by-date 2021-03-01
+Appointments for Dr. <Dr. Leg> on date <2021-03-01> [ { consultant: 'Dr. Leg',
+    patient: 'B. R. Oken',
+    startTime: '2021-03-01 08:36' },
+  { consultant: 'Dr. Leg',
+    patient: 'R. Ubber-Glove',
+    startTime: '2021-03-01 16:48' } ]
+
+
+2) What are the available consultation slots for Dr. Big-Toe between 10:00am and 12:00am on 2021-03-02? 
+node ./src/index.js --available-consultation-by-doctor-filter 'Dr. Big-Toe' --available-consultation-slots-start-date '2021-03-02 10:00' --available-consultation-slots-end-date '2021-03-02 12:00'
+Available slots between <2021-03-02 10:00> and <2021-03-02 12:00> [ { name: 'Dr. Big-Toe',
+    slots:
+     [ '10:00-10:10', '10:12-10:22', '10:24-10:34', '10:36-10:46' ] } ]
+Available slots between <program.availableConsultationSlotsStartDate> and <program.availableConsultationSlotsEndDate> [ { name: 'Dr. Big-Toe',
+    slots:
+     [ '10:00-10:10', '10:12-10:22', '10:24-10:34', '10:36-10:46' ] } ]
+
+3) What are the available consultation slots between 3pm and 5pm on 2021-03-01 across all consultants?
+node ./src/index.js  --available-consultation-slots-start-date '2021-03-02 10:00' --available-consultation-slots-end-date '2021-03-02 12:00'
+Available slots between <2021-03-02 10:00> and <2021-03-02 12:00> [ { name: 'Dr. Big-Toe',
+    slots:
+     [ '10:00-10:10', '10:12-10:22', '10:24-10:34', '10:36-10:46' ] },
+  { name: 'Dr. Spleen',
+    slots:
+     [ '10:00-10:10',
+       '10:00-10:10',
+       '10:12-10:22',
+       '10:12-10:22',
+       '10:24-10:34',
+       '10:24-10:34',
+       '10:36-10:46',
+       '10:36-10:46',
+       '10:48-10:58',
+       '10:48-10:58',
+       '11:00-11:10',
+       '11:00-11:10',
+       '11:12-11:22',
+       '11:12-11:22',
+       '11:24-11:34',
+       '11:24-11:34',
+       '11:36-11:46',
+       '11:36-11:46',
+       '11:48-11:58',
+       '11:48-11:58' ] } ]
+
+4) What is the percentage utilisation of each consultant each day?
+node ./src/index.js --utilization
+ [ { '2021-03-01': 'Dr. Big-Toe - 0.0%' },
+  { '2021-03-01': 'Dr. Leg - 2.3%' },
+  { '2021-03-01': 'Dr. Spleen - 0%' },
+  { '2021-03-02': 'Dr. Big-Toe - 0%' },
+  { '2021-03-02': 'Dr. Leg - 0%' },
+  { '2021-03-02': 'Dr. Spleen - 2.5%' } ]
 
 
 Prefix:
