@@ -1,4 +1,30 @@
 # tech-test-my-pulse
+
+# Installation:
+ pre-requisites: node js > 10
+
+1) Unzip and cd into unzipped directory
+To Install
+2) npm i
+To run tests:
+3) npm t 
+
+To start the server:
+npm run start
+Then browse to  http://localhost:3000
+
+
+Prefix:
+I feel this is not a great assertion of my coding ability. Its more a test of if I can write code after 2am in the morning because its the only free time i have. I would definitely rewrite it all with smaller functions that do less and could be composed. Speaking of composition I did not use any libraries for this except for a date library to help with dates.
+All the tests pass except for the percentage utilizations which are slightly out.
+
+There are a few issues with the test that I would like to mention:
+1) there is a bug in the test data:
+"name": "Dr. Big-Toe",
+    "availability": [
+      "2021-03-01 10:00 - 16:00", -- SHOULD BE 17:00 if question 3 should be answered correctly
+       "2021-03-02 07:30 - 17:00" // // @ATTENTION: Should 7.30 allowed when clinic opening times is 8??
+
 tech test - appointment management
 
 

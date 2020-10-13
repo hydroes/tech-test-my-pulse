@@ -17,8 +17,9 @@ app.use(function (err, req, res, next) {
 app.get('/', (req, res) => {
   res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
-// app.post('/players', players.addPlayer)
-
+app.post('/query', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
