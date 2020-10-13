@@ -1,5 +1,5 @@
 const filterByConsultantAndDate = require('./appointments-by-consultant-date')
-const appointments = require('../data/appointments.json')
+const appointments = require('../data/appointments')
 
 // filter appointments by consultant and specific date
 test('What appointments have been arranged for Dr. Leg on 2021-03-01?', () => {

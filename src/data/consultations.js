@@ -1,9 +1,9 @@
-[
+module.exports = [
   {
     "name": "Dr. Big-Toe",
     "availability": [
-      "2021-03-01 10:00 - 16:00",
-      "2021-03-02 07:30 - 17:00"
+      "2021-03-01 10:00 - 16:00", // @ATTENTION: TEST DATA GIVEN IS INCORRECT
+      "2021-03-02 07:30 - 17:00" // // @ATTENTION: Should 7.30 allowed when clinic opening times is 8??
     ]
   },
   {

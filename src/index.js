@@ -3,8 +3,10 @@ const app = express()
 const port = 3000
 const path = require('path')
 
+app.set('views', './views')
+app.set('view engine', 'pug')
+
 app.use(express.json());
-app.use(express.static('public'))
 
 app.use(function (err, req, res, next) {
   console.error(err.stack)
@@ -14,7 +16,8 @@ app.use(function (err, req, res, next) {
 // routes
 app.get('/', (req, res) => {
   // res.sendFile('public/schedule-form.html')
-  res.sendFile(path.join(__dirname, './public', 'schedule-form.html'));
+  // res.sendFile(path.join(__dirname, './public', 'schedule-form.html'));
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 // app.post('/players', players.addPlayer)
 

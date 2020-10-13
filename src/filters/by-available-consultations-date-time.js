@@ -74,17 +74,17 @@ const addUnbookedAppointmentSlots = (consultantsData, appointments) => consultan
 })
 
 // @todo: ensure startDateTime, endDateTime are moment so comparison works
-module.exports = (consultations, appointments, consultantName = false, startDateTime, endDateTime) => {
+module.exports = (consultations, appointments, consultantName = false, queryStartDateTime, queryEndDateTime) => {
 
   // filter by consultant if consultantName provided
   const consultationsFiltered = filterByConsultant(consultations, consultantName)
 
   // filter by time 0:00am and 12:00am on 2021-03-02
   // '2021-03-01 10:00'
-  const parsedStartDateTime = moment(startDateTime, 'YYYY-MM-DD hh:mm')
-  const parsedEndDateTime = moment(endDateTime, 'YYYY-MM-DD hh:mm')
+  const parsedQueryStartDateTime = moment(queryStartDateTime, 'YYYY-MM-DD hh:mm')
+  const parsedEndDateTime = moment(queryEndDateTime, 'YYYY-MM-DD hh:mm')
 
-  const consultantsData = filterAvailability(consultationsFiltered, parsedStartDateTime, parsedEndDateTime)
+  const consultantsData = filterAvailability(consultationsFiltered, parsedQueryStartDateTime, parsedEndDateTime)
   const consultantsWithUnbookedSlots = addUnbookedAppointmentSlots(consultantsData, appointments)
 
   const consulationsInfo = consultantsWithUnbookedSlots.map(consultantInfo => {

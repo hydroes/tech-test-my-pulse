@@ -1,6 +1,6 @@
 const filterAvailableConsultations = require('./by-available-consultations-date-time')
-const consultations = require('../data/consultations.json')
-const appointments = require('../data/appointments.json')
+const consultations = require('../data/consultations')
+const appointments = require('../data/appointments')
 
 // 'What are the available consultation slots for Dr. Big-Toe between 10:00 and 12:00 on 2021-03-02?'
 test('filter by consultant and specific date/time and return available consultation slots', () => {
@@ -21,7 +21,7 @@ test('filter by consultant and specific date/time and return available consultat
 });
 
 // 'What are the available consultation slots between 3pm and 5pm on 2021-03-01 across all consultants?'
-test.only('filter by specific date/time and return available consultation slots', () => {
+test('filter by specific date/time and return available consultation slots', () => {
 
   const expected = [{
     "name": "Dr. Leg",
