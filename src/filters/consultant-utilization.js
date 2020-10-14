@@ -1,5 +1,6 @@
 
-const moment = require('moment')
+const moment = require('moment-timezone')
+moment.tz.setDefault("Europe/London")
 const { getStartDateFromString } = require('../utilities/date-parser')
 const consultationSettings = require('../constants/consultation-settings')
 const filterAvailableConsultations = require('./by-available-consultations-date-time')

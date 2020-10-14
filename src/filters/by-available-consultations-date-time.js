@@ -1,4 +1,5 @@
-const moment = require('moment')
+const moment = require('moment-timezone')
+moment.tz.setDefault("Europe/London")
 const { INPUT_DATE_FORMAT } = require('../constants/input-date-format')
 const { getStartDateFromString, getEndDateFromString } = require('../utilities/date-parser')
 const createSlots = require('../utilities/create-slots')

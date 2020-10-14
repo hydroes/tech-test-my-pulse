@@ -7,7 +7,19 @@
 To Install
 2) npm i
 To run tests:
-3) npm t 
+3) npm t
+
+app config can be changed by editing the consultation-settings.js :
+break time and consultation times can be edited there.
+
+  consultationTime: { minutes: 10 },
+  breakBetweenConsultations: { minutes: 2 },
+  breakAfterConsultations: { hours: 1 },
+  breakThreshold: 4,
+  slotTimeFormat: 'hh:mm',
+  serviceTimeStartHour: '08:00',
+  serviceTimeEndHour: '18:00'
+
 
 To query the db use the following examples:
 
