@@ -1,6 +1,3 @@
-const moment = require('moment-timezone')
-moment.tz.setDefault("Europe/London")
-
 const consultations = require('./data/consultations')
 const appointments = require('./data/appointments')
 const consultantUtilization = require('./filters/consultant-utilization')
